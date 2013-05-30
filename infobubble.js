@@ -42,57 +42,27 @@ function InfoBubble(opt_options) {
 
   var options = opt_options || {};
 
-  if (options['backgroundColor'] == undefined) {
-    options['backgroundColor'] = this.BACKGROUND_COLOR_;
+  function ifndef(q, x) { return q === undefined ? x : q; }
+  function setdefaults(o, defs) {
+    for (d in defs)
+      o[d] = ifndef(o[d], defs[d]);
   }
 
-  if (options['borderColor'] == undefined) {
-    options['borderColor'] = this.BORDER_COLOR_;
-  }
-
-  if (options['borderRadius'] == undefined) {
-    options['borderRadius'] = this.BORDER_RADIUS_;
-  }
-
-  if (options['borderWidth'] == undefined) {
-    options['borderWidth'] = this.BORDER_WIDTH_;
-  }
-
-  if (options['padding'] == undefined) {
-    options['padding'] = this.PADDING_;
-  }
-  
-  if(options['tabPadding'] == undefined) {
-    options['tabPadding'] == this.TABPADDING_;
-  }
-
-  if (options['arrowPosition'] == undefined) {
-    options['arrowPosition'] = this.ARROW_POSITION_;
-  }
-
-  if (options['disableAutoPan'] == undefined) {
-    options['disableAutoPan'] = false;
-  }
-
-  if (options['disableAnimation'] == undefined) {
-    options['disableAnimation'] = false;
-  }
-
-  if (options['minWidth'] == undefined) {
-    options['minWidth'] = this.MIN_WIDTH_;
-  }
-
-  if (options['shadowStyle'] == undefined) {
-    options['shadowStyle'] = this.SHADOW_STYLE_;
-  }
-
-  if (options['arrowSize'] == undefined) {
-    options['arrowSize'] = this.ARROW_SIZE_;
-  }
-
-  if (options['arrowStyle'] == undefined) {
-    options['arrowStyle'] = this.ARROW_STYLE_;
-  }
+  setdefaults(options, {
+      backgroundColor:    this.BACKGROUND_COLOR_,
+      borderColor:        this.BORDER_COLOR_,
+      borderRadius:       this.BORDER_RADIUS_,
+      borderWidth:        this.BORDER_WIDTH_,
+      padding:            this.PADDING_,
+      tabPadding:         this.TABPADDING_,
+      arrowPosition:      this.ARROW_POSITION_,
+      disableAutoPan:     false,
+      disableAnimation:   false,
+      minWidth:           this.MIN_WIDTH_,
+      shadowStyle:        this.SHADOW_STYLE_,
+      arrowSize:          this.ARROW_SIZE_,
+      arrowStyle:         this.ARROW_STYLE_
+  });
 
   this.buildDom_();
 
